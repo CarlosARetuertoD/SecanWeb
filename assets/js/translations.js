@@ -11,6 +11,23 @@ const translations = {
     hero_subtitle: "SECAN",
     hero_description: "Ofrecemos tecnología sudafricana de vanguardia para la industria minera.",
     
+    // Slider Section
+    slider_title1: "SECAN",
+    slider_subtitle1: "Tecnología",
+    slider_description1: "Durabilidad y potencia para minería subterránea",
+    slider_title2: "Jackleg",
+    slider_subtitle2: "Equipos de perforación",
+    slider_description2: "Tecnología sudafricana de vanguardia",
+    slider_title3: "Perforadoras",
+    slider_subtitle3: "para minería",
+    slider_description3: "Rendimiento constante en condiciones extremas",
+    slider_tech_solutions: "sudafricana",
+    slider_drilling_equipment: "subterránea",
+    slider_reliable_equipment: "subterránea",
+    slider_pneumatic: "Neumáticas",
+    slider_prev: "Anterior",
+    slider_next: "Siguiente",
+    
     // Navigation
     nav_home: "Inicio",
     nav_about: "Sobre Nosotros",
@@ -27,13 +44,13 @@ const translations = {
     btn_download_stoper: "Descargar Ficha Técnica",
     
     // About Section
-    about_subtitle: "About",
-    about_title: "About",
-    about_description: "Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam",
-    about_content_title: "Crafting meaningful experiences through thoughtful design and innovative solutions",
-    about_content_lead: "We believe in the power of purposeful creation, where every detail serves a greater vision and every project becomes a testament to our commitment to excellence.",
-    about_content_text: "Our journey began with a simple philosophy: to transform ideas into reality through meticulous attention to detail and an unwavering dedication to quality. Today, we continue to push boundaries while staying true to our core values of authenticity, innovation, and meaningful impact.",
-    about_discover_link: "Discover our story",
+    about_subtitle: "Sobre",
+    about_title: "Sobre Nosotros",
+    about_description: "Somos especialistas en tecnología minera sudafricana, ofreciendo equipos robustos y confiables para la industria minera subterránea.",
+    about_content_title: "Creando experiencias significativas a través de diseño cuidadoso y soluciones innovadoras",
+    about_content_lead: "Creemos en el poder de la creación con propósito, donde cada detalle sirve a una visión más grande y cada proyecto se convierte en un testimonio de nuestro compromiso con la excelencia.",
+    about_content_text: "Nuestro viaje comenzó con una filosofía simple: transformar ideas en realidad a través de una atención meticulosa al detalle y una dedicación inquebrantable a la calidad. Hoy, continuamos empujando límites mientras nos mantenemos fieles a nuestros valores fundamentales de autenticidad, innovación e impacto significativo.",
+    about_discover_link: "Descubre nuestra historia",
     
     // Jackleg S250 Section
     jackleg_subtitle: "Productos",
@@ -86,14 +103,14 @@ const translations = {
     clients_description: "Empresas que confían en nuestra tecnología sudafricana",
     
     // Features Section
-    features_subtitle: "Features",
-    features_title: "Great Features",
-    features_description: "Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit",
+    features_subtitle: "Características",
+    features_title: "Excelentes Características",
+    features_description: "Nuestros equipos destacan por su robustez, confiabilidad y rendimiento superior en condiciones extremas",
     
     // Services Section
-    services_subtitle: "Services",
-    services_title: "Our Services",
-    services_description: "Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit",
+    services_subtitle: "Servicios",
+    services_title: "Nuestros Servicios",
+    services_description: "Ofrecemos soporte técnico especializado, mantenimiento y asesoría para equipos mineros",
     
     // Contact Section
     contact_subtitle: "Contacto",
@@ -111,15 +128,15 @@ const translations = {
     contact_get_touch_desc: "Estamos aquí para ayudarte con cualquier consulta sobre nuestros productos",
     
     // Footer
-    footer_company: "Company",
-    footer_solutions: "Solutions",
-    footer_get_touch: "Get in Touch",
-    footer_stay_updated: "Stay Updated",
-    footer_email_placeholder: "Enter your email",
+    footer_company: "Empresa",
+    footer_solutions: "Soluciones",
+    footer_get_touch: "Ponte en Contacto",
+    footer_stay_updated: "Mantente Actualizado",
+    footer_email_placeholder: "Ingresa tu email",
     footer_copyright: "Copyright",
-    footer_rights: "All Rights Reserved",
-    footer_privacy: "Privacy Policy",
-    footer_terms: "Terms of Service",
+    footer_rights: "Todos los Derechos Reservados",
+    footer_privacy: "Política de Privacidad",
+    footer_terms: "Términos de Servicio",
     footer_cookies: "Cookie Policy"
   },
   
@@ -128,6 +145,23 @@ const translations = {
     hero_title: "Durability and Power for Underground Mining",
     hero_subtitle: "SECAN",
     hero_description: "We offer cutting-edge South African technology for the mining industry.",
+    
+    // Slider Section
+    slider_title1: "SECAN",
+    slider_subtitle1: "Technology",
+    slider_description1: "Durability and power for underground mining",
+    slider_title2: "Jackleg",
+    slider_subtitle2: "Underground drilling",
+    slider_description2: "Cutting-edge South African technology",
+    slider_title3: "Pneumatic",
+    slider_subtitle3: "for mining",
+    slider_description3: "Constant performance in extreme conditions",
+    slider_tech_solutions: "South African",
+    slider_drilling_equipment: "underground",
+    slider_reliable_equipment: "underground",
+    slider_pneumatic: "Drills",
+    slider_prev: "Previous",
+    slider_next: "Next",
     
     // Navigation
     nav_home: "Home",
@@ -145,13 +179,13 @@ const translations = {
     btn_download_stoper: "Download Technical Sheet",
     
     // About Section
-    about_subtitle: "About",
-    about_title: "About",
-    about_description: "Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam",
-    about_content_title: "Crafting meaningful experiences through thoughtful design and innovative solutions",
-    about_content_lead: "We believe in the power of purposeful creation, where every detail serves a greater vision and every project becomes a testament to our commitment to excellence.",
-    about_content_text: "Our journey began with a simple philosophy: to transform ideas into reality through meticulous attention to detail and an unwavering dedication to quality. Today, we continue to push boundaries while staying true to our core values of authenticity, innovation, and meaningful impact.",
-    about_discover_link: "Discover our story",
+    about_subtitle: "Sobre",
+    about_title: "Sobre Nosotros",
+    about_description: "Somos especialistas en tecnología minera sudafricana, ofreciendo equipos robustos y confiables para la industria minera subterránea.",
+    about_content_title: "Creando experiencias significativas a través de diseño cuidadoso y soluciones innovadoras",
+    about_content_lead: "Creemos en el poder de la creación con propósito, donde cada detalle sirve a una visión más grande y cada proyecto se convierte en un testimonio de nuestro compromiso con la excelencia.",
+    about_content_text: "Nuestro viaje comenzó con una filosofía simple: transformar ideas en realidad a través de una atención meticulosa al detalle y una dedicación inquebrantable a la calidad. Hoy, continuamos empujando límites mientras nos mantenemos fieles a nuestros valores fundamentales de autenticidad, innovación e impacto significativo.",
+    about_discover_link: "Descubre nuestra historia",
     
     // Jackleg S250 Section
     jackleg_subtitle: "Products",
@@ -204,14 +238,14 @@ const translations = {
     clients_description: "Companies that trust our South African technology",
     
     // Features Section
-    features_subtitle: "Features",
-    features_title: "Great Features",
-    features_description: "Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit",
+    features_subtitle: "Características",
+    features_title: "Excelentes Características",
+    features_description: "Nuestros equipos destacan por su robustez, confiabilidad y rendimiento superior en condiciones extremas",
     
     // Services Section
-    services_subtitle: "Services",
-    services_title: "Our Services",
-    services_description: "Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit",
+    services_subtitle: "Servicios",
+    services_title: "Nuestros Servicios",
+    services_description: "Ofrecemos soporte técnico especializado, mantenimiento y asesoría para equipos mineros",
     
     // Contact Section
     contact_subtitle: "Contact",
@@ -229,15 +263,15 @@ const translations = {
     contact_get_touch_desc: "We're here to help you with any questions about our products",
     
     // Footer
-    footer_company: "Company",
-    footer_solutions: "Solutions",
-    footer_get_touch: "Get in Touch",
-    footer_stay_updated: "Stay Updated",
-    footer_email_placeholder: "Enter your email",
+    footer_company: "Empresa",
+    footer_solutions: "Soluciones",
+    footer_get_touch: "Ponte en Contacto",
+    footer_stay_updated: "Mantente Actualizado",
+    footer_email_placeholder: "Ingresa tu email",
     footer_copyright: "Copyright",
-    footer_rights: "All Rights Reserved",
-    footer_privacy: "Privacy Policy",
-    footer_terms: "Terms of Service",
+    footer_rights: "Todos los Derechos Reservados",
+    footer_privacy: "Política de Privacidad",
+    footer_terms: "Términos de Servicio",
     footer_cookies: "Cookie Policy"
   }
 };

@@ -6,7 +6,7 @@
 
 :root { 
   --background-color: #ffffff; 
-  --default-color: #1a1715;
+  --default-color: #000000;
   --heading-color: #110a06; 
   --accent-color: #c85716; 
   --surface-color: #ffffff;
@@ -24,7 +24,7 @@
   --surface-color: #ffffff;
 }
 .dark-background {
-  --background-color: #000000;
+  --background-color: #201e1e;
   --default-color: #ffffff;
   --heading-color: #ffffff;
   --surface-color: #252626;
@@ -63,6 +63,11 @@ h6 {
   color: var(--heading-color);
   font-family: var(--heading-font);
 }
+
+span.color {
+	color: var(--accent-color);
+  font-weight: 500;
+}
 /*--------------------------------------------------------------
 # Global Header
 --------------------------------------------------------------*/
@@ -97,7 +102,6 @@ h6 {
   padding: 0 8px;
   display: inline-block;
   font-size: 25px;
-  transition: 0.3s;
 }
 
 .header .social-links a:hover {
@@ -205,7 +209,7 @@ h6 {
 # Navigation Menu
 --------------------------------------------------------------*/
 /* Navmenu - Desktop */
-@media (min-width: 1200px) {
+@media (min-width: 768px) {
   .navmenu {
     padding: 0;
   }
@@ -312,7 +316,7 @@ h6 {
 }
 
 /* Navmenu - Mobile */
-@media (max-width: 1199px) {
+@media (max-width: 767px) {
   .mobile-nav-toggle {
     color: var(--nav-color);
     font-size: 28px;
@@ -885,9 +889,9 @@ textarea::placeholder {
   color: color-mix(in srgb, var(--default-color), transparent 50%);
 }
 
-/*--------------------------------------------------------------
+/*/*--------------------------------------------------------------
 # Global Sections
---------------------------------------------------------------*/
+--------------------------------------------------------------
 section,
 .section {
   color: var(--default-color);
@@ -903,8 +907,59 @@ section,
   .section {
     scroll-margin-top: 73px;
   }
+}*/
+/*--------------------------------------------------------------
+# Global Sections
+--------------------------------------------------------------*/
+section,
+.section {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  padding: 60px 0;
+  scroll-margin-top: 100px;
+  overflow: clip;
 }
 
+/* Main container adjustments */
+.main {
+  margin: 0;
+  padding: 0;
+}
+
+/* Specific override for slider section */
+#slider.section {
+  padding: 0;
+  margin: 0;
+}
+
+.section-bg {
+  background-color: transparent;
+  padding: 160px 0;
+  position: relative;
+}
+
+.section-bg:before {
+  content: "";
+  background-color: var(--background-color);
+  position: absolute;
+  bottom: 60px;
+  top: 60px;
+  left: 0;
+  right: 0;
+  transform: skewY(-3deg);
+}
+
+.section-bg .container {
+  position: relative;
+}
+
+@media (max-width: 1199px) {
+
+  section,
+  .section {
+    scroll-margin-top: 66px;
+  }
+}
 /*--------------------------------------------------------------
 # Global Section Titles
 --------------------------------------------------------------*/
@@ -960,37 +1015,223 @@ section,
   text-wrap: balance;
 }
 
-/*--------------------------------------------------------------
-# Hero Section
---------------------------------------------------------------*/
-.hero {
-  padding: 120px 0;
-  min-height: 100vh;
-  position: relative;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
+/*=========================================
+	Slider
+==========================================*/
+
+#slider {
+	padding: 0;
+	margin: 0;
+	height: 100vh;
+	overflow: hidden;
 }
-.hero .hero-background {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
+
+/* Hero Slide - Static version */
+.hero-slide {
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 100vh;
+	min-height: 100vh;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	padding: 0;
+}
+
+#slider .carousel-inner .carousel-item {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  height: 100vh;
+  min-height: 600px;
+  position: relative;
+  transition: opacity 0.8s ease-in-out;
 }
 
-.hero .hero-overlay {
+/* Transición suave entre slides */
+.carousel-item {
+  transition: transform 0.8s ease-in-out, opacity 0.8s ease-in-out;
+}
+
+.carousel-item-next,
+.carousel-item-prev {
+  transform: translateX(0);
+}
+
+.carousel-item-next:not(.carousel-item-start),
+.active.carousel-item-end {
+  transform: translateX(100%);
+}
+
+.carousel-item-prev:not(.carousel-item-end),
+.active.carousel-item-start {
+  transform: translateX(-100%);
+}
+
+/* Efecto de fade para transiciones más suaves */
+.carousel-item.active {
+  opacity: 1;
+}
+
+/* Preload de imágenes para transiciones más suaves */
+.carousel-item::before {
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: color-mix(in srgb, var(--background-color), transparent 20%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  z-index: -1;
+}
+
+.carousel-item.active::before {
+  opacity: 1;
+}
+
+#slider .carousel-inner {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+}
+
+#slider .carousel {
+  height: 100vh;
+  min-height: 600px;
+}
+
+.carousel-caption {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 3;
+  width: 100%;
+  margin-top: 40px; /* Compensar por el navbar */
+}
+
+.carousel-caption h2 {
+  color: #fff;
+  font-size: 62px;
+  font-weight: 300;
+}
+
+.carousel-caption h2 span {
+  color: #fff;
+  font-weight: 800;
+}
+
+.carousel-caption h3 {
+  color: #fff;
+  font-size: 48px;
+  font-weight: 200;
+  margin: 6px 0 20px;
+}
+
+.carousel-caption p {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.carousel-caption p:before,
+.carousel-caption p:after {
+color: var(--accent-color);
+content: "___";
+position: relative;
+top: -8px;
+}
+
+.carousel-caption p:before {
+  right: 20px;
+}
+
+.carousel-caption p:after {
+  left: 20px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.7;
+  transition: all 0.3s ease;
+  margin-top: 40px; /* Compensar por el navbar */
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background-color: var(--accent-color);
+  opacity: 1;
+}
+
+.carousel-control-prev {
+  left: 30px;
+}
+
+.carousel-control-next {
+  right: 30px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Carousel Indicators */
+.carousel-indicators {
+  bottom: 20px;
+  margin-bottom: 0;
+  z-index: 5;
+  margin-top: 40px; /* Compensar por el navbar */
+}
+
+.carousel-indicators [data-bs-target] {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(128, 128, 128, 0.6);
+  border: none;
+  margin: 0 4px;
+  transition: all 0.3s ease;
+}
+
+.carousel-indicators .active {
+  background-color: rgba(128, 128, 128, 1);
+  transform: scale(1.1);
+}
+
+.carousel-indicators [data-bs-target]:hover {
+  background-color: rgba(128, 128, 128, 0.8);
+  transform: scale(1.05);
+}
+.carousel-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: color-mix(in srgb, var(--default-color), transparent 30%);
   z-index: 2;
+  pointer-events: none;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  z-index: 4;
 }
 /*--------------------------------------------------------------
 # Jackleg S250 Section
@@ -1018,7 +1259,6 @@ section,
   gap: 8px;
   font-weight: 600;
   font-size: 0.9rem;
-  animation: float 4s ease-in-out infinite;
   min-width: 160px;
   justify-content: center;
   backdrop-filter: blur(10px);
@@ -1342,7 +1582,6 @@ section,
   gap: 8px;
   font-weight: 600;
   font-size: 0.9rem;
-  animation: float 3s ease-in-out infinite;
   min-width: 160px;
   justify-content: center;
   backdrop-filter: blur(10px);
@@ -1409,7 +1648,6 @@ section,
   gap: 8px;
   font-weight: 600;
   font-size: 0.9rem;
-  animation: float 4s ease-in-out infinite;
   min-width: 160px;
   justify-content: center;
   backdrop-filter: blur(10px);
@@ -2262,38 +2500,91 @@ section,
 }
 
 /* ========================================
-   ANIMACIONES FLOTANTES Y HOVER
+   CAROUSEL ANIMATIONS
    ======================================== */
 
-/* Animaciones flotantes para elementos de especificaciones */
-.floating-card {
-  animation: float 4s ease-in-out infinite;
+/* Animaciones para elementos del carousel */
+.carousel-caption h2 {
+  animation: bounceInDown 1.2s ease-out 0.1s both;
 }
 
-.floating-card:nth-child(1) {
-  animation-delay: 0s;
+.carousel-caption h3 {
+  animation: slideInLeft 1.2s ease-out 0.2s both;
 }
 
-.floating-card:nth-child(2) {
-  animation-delay: 1s;
+.carousel-caption p {
+  animation: slideInRight 1.2s ease-out 0.3s both;
 }
 
-.floating-card:nth-child(3) {
-  animation-delay: 2s;
-}
-
-.floating-card:nth-child(4) {
-  animation-delay: 3s;
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
+/* Keyframes para las animaciones */
+@keyframes bounceInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px);
   }
-  50% {
-    transform: translateY(-8px);
+  60% {
+    opacity: 1;
+    transform: translateY(10px);
+  }
+  80% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
   }
 }
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Reiniciar animaciones en cada slide */
+.carousel-item.active .carousel-caption h2,
+.carousel-item.active .carousel-caption h3,
+.carousel-item.active .carousel-caption p {
+  animation-play-state: running;
+}
+
+.carousel-item:not(.active) .carousel-caption h2,
+.carousel-item:not(.active) .carousel-caption h3,
+.carousel-item:not(.active) .carousel-caption p {
+  animation-play-state: paused;
+  animation-fill-mode: both;
+  opacity: 0;
+}
+
+/* ========================================
+   HOVER EFFECTS SIMPLES
+   ======================================== */
 
 /* Hover effect para imágenes de productos */
 .hero-image img {
@@ -2304,9 +2595,237 @@ section,
   transform: scale(1.05);
 }
 
-/* Animación adicional para las tarjetas flotantes */
-.floating-card:hover {
-  transform: translateY(-12px) scale(1.05);
-  transition: transform 0.3s ease-in-out;
-  animation-play-state: paused;
+/*--------------------------------------------------------------
+# Clients Section
+--------------------------------------------------------------*/
+.clients .swiper-slide img {
+  opacity: 0.5;
+  transition: 0.3s;
+  filter: grayscale(100);
+}
+
+.clients .swiper-slide img:hover {
+  filter: none;
+  opacity: 1;
+}
+
+.clients .swiper-wrapper {
+  height: auto;
+}
+
+.clients .swiper-pagination {
+  margin-top: 20px;
+  position: relative;
+}
+
+.clients .swiper-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  opacity: 1;
+  background-color: color-mix(in srgb, var(--default-color), transparent 80%);
+}
+
+.clients .swiper-pagination .swiper-pagination-bullet-active {
+  background-color: var(--accent-color);
+}
+
+/*--------------------------------------------------------------
+# About Section
+--------------------------------------------------------------*/
+.about .content h3 {
+  font-weight: 700;
+  font-size: 34px;
+  margin-bottom: 30px;
+}
+
+.about .content p {
+  margin-bottom: 30px;
+}
+
+.about .content .about-btn {
+  padding: 8px 30px 9px 30px;
+  color: var(--default-color);
+  border-radius: 50px;
+  transition: 0.3s;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  border: 2px solid var(--accent-color);
+}
+
+.about .content .about-btn i {
+  font-size: 16px;
+  padding-left: 5px;
+}
+
+.about .content .about-btn:hover {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+.about .icon-box i {
+  font-size: 40px;
+  color: var(--accent-color);
+  margin-bottom: 10px;
+}
+
+.about .icon-box h4 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+}
+
+.about .icon-box h4 a {
+  color: var(--heading-color);
+  transition: 0.3s;
+}
+
+.about .icon-box p {
+  font-size: 15px;
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  margin-bottom: 0;
+}
+
+.about .icon-box:hover h4 a {
+  color: var(--accent-color);
+}
+
+/*--------------------------------------------------------------
+# Stats Section
+--------------------------------------------------------------*/
+.stats i {
+  background-color: var(--surface-color);
+  color: var(--accent-color);
+  box-shadow: 0px 2px 25px rgba(0, 0, 0, 0.1);
+  width: 54px;
+  height: 54px;
+  font-size: 24px;
+  border-radius: 50px;
+  border: 2px solid var(--background-color);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.stats .stats-item {
+  background-color: var(--surface-color);
+  margin-top: -27px;
+  padding: 30px 30px 25px 30px;
+  width: 100%;
+  position: relative;
+  text-align: center;
+  box-shadow: 0px 2px 35px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  z-index: 0;
+}
+
+.stats .stats-item span {
+  font-size: 36px;
+  display: block;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+}
+
+.stats .stats-item p {
+  padding: 0;
+  margin: 0;
+  font-family: var(--heading-font);
+  font-size: 16px;
+}
+
+/*--------------------------------------------------------------
+# Tabs Section
+--------------------------------------------------------------*/
+.tabs .nav-tabs {
+  border: 0;
+}
+
+.tabs .nav-link {
+  color: var(--heading-color);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 85%);
+  padding: 15px 20px;
+  transition: 0.3s;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 100%;
+}
+
+.tabs .nav-link i {
+  padding-right: 15px;
+  font-size: 48px;
+}
+
+.tabs .nav-link h4 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.tabs .nav-link:hover {
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.tabs .nav-link.active {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  border-color: var(--accent-color);
+}
+
+.tabs .nav-link.active h4 {
+  color: var(--contrast-color);
+}
+
+@media (max-width: 768px) {
+  .tabs .nav-link i {
+    padding: 0;
+    line-height: 1;
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 575px) {
+  .tabs .nav-link {
+    padding: 15px;
+  }
+
+  .tabs .nav-link i {
+    font-size: 24px;
+  }
+}
+
+.tabs .tab-content {
+  margin-top: 30px;
+}
+
+.tabs .tab-pane h3 {
+  color: var(--heading-color);
+  font-weight: 700;
+  font-size: 26px;
+}
+
+.tabs .tab-pane ul {
+  list-style: none;
+  padding: 0;
+}
+
+.tabs .tab-pane ul li {
+  padding-bottom: 10px;
+}
+
+.tabs .tab-pane ul i {
+  font-size: 20px;
+  padding-right: 4px;
+  color: var(--accent-color);
+}
+
+.tabs .tab-pane p:last-child {
+  margin-bottom: 0;
 }

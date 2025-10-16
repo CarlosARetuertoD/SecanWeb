@@ -105,6 +105,88 @@
   window.addEventListener('load', aosInit);
 
   /**
+   * Initialize carousel auto-play with enhanced features
+   */
+  function initCarousel() {
+    const carousel = document.getElementById('carousel-example-generic');
+    if (carousel) {
+      // Precargar imágenes para transiciones más suaves
+      const images = [
+        'assets/img/backgrounds/south_africa.jpg',
+        'assets/img/backgrounds/south_africa_1.jpg',
+        'assets/img/backgrounds/south_africa_2.jpg'
+      ];
+      
+      images.forEach(src => {
+        const img = new Image();
+        img.src = src;
+      });
+      
+      // Mejorar transiciones de fondo
+      carousel.addEventListener('slide.bs.carousel', function() {
+        const activeSlide = carousel.querySelector('.carousel-item.active');
+        const nextSlide = carousel.querySelector('.carousel-item-next');
+        
+        if (activeSlide && nextSlide) {
+          // Aplicar efecto de crossfade
+          activeSlide.style.opacity = '0';
+          nextSlide.style.opacity = '1';
+          
+          setTimeout(() => {
+            activeSlide.style.opacity = '';
+            nextSlide.style.opacity = '';
+          }, 800);
+        }
+      });
+      
+      // Reiniciar animaciones cuando cambie el slide
+      carousel.addEventListener('slide.bs.carousel', function() {
+        // Pequeño delay para asegurar que el slide esté activo
+        setTimeout(() => {
+          const activeSlide = carousel.querySelector('.carousel-item.active');
+          if (activeSlide) {
+            const animatedElements = activeSlide.querySelectorAll('.carousel-caption h2, .carousel-caption h3, .carousel-caption p');
+            animatedElements.forEach(element => {
+              element.style.animation = 'none';
+              element.offsetHeight; // Trigger reflow
+              element.style.animation = null;
+            });
+          }
+        }, 50);
+      });
+    }
+  }
+  window.addEventListener('load', initCarousel);
+
+  /**
+   * Initialize WOW.js animations
+   */
+  function initWow() {
+    new WOW({
+      boxClass: 'wow',
+      animateClass: 'animated',
+      offset: 0,
+      mobile: true,
+      live: true
+    }).init();
+  }
+  window.addEventListener('load', initWow);
+
+  /**
+   * Reinitialize WOW.js on carousel slide change
+   */
+  document.addEventListener('DOMContentLoaded', function() {
+    const carousel = document.getElementById('carousel-example-generic');
+    if (carousel) {
+      carousel.addEventListener('slide.bs.carousel', function() {
+        setTimeout(function() {
+          new WOW().init();
+        }, 100);
+      });
+    }
+  });
+
+  /**
    * Initiate Pure Counter
    */
   new PureCounter();
